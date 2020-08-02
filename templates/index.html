@@ -1,15 +1,27 @@
 <html>
     <head>
-        <title>Community Events Board</title>
+        <title>AUGUST DOMESTIC - lhjtrades</title>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
     </head>
     <body>
-      <h1>Community Events Board</h1>
-      <div class="event-list">
+        <form action="/search" method="POST">
+            <input type="text" name="search" placeholder="Search" value="{% if info %}{{info.username}}{% endif %}">
+            <input type="submit" value="Submit">
+        </form>
+        <br/>
+        {% if info %}
+        <b>Username:</b> {{ info.username }}<br/>
+        <b>Email:</b> {{ info.email }}<br/>
+        <b>Location:</b> {{ info.location }}<br/>
+        <b>Items:</b><br/>
         <ul>
-          {% for event in events %}
-            <li>{{ event.event }} - {{ event.date }}</li>
-          {% endfor %}
+            {% for key in info2 %}
+                <li>{{key}}: {{info2[key]}}</li>
+            {% endfor %}
         </ul>
-      </div>
+        <b>Total:</b> {{ info.total }}<br/>
+        <b>Regular:</b> {{ info.reg }}<br/>
+        <b>Trading:</b> {{ info.trading }}<br/>
+        {% endif %}
     </body>
 </html>
