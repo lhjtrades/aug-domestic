@@ -5,6 +5,7 @@ from flask import render_template
 from flask import request
 from flask_pymongo import PyMongo
 from datetime import datetime
+from model import WriteDictToCSV
 import os
 
 
@@ -41,3 +42,23 @@ def search():
             return render_template('index.html', time = datetime.now())
         return render_template('index.html', info = info, info2 = info2, time = datetime.now())
     return render_template('index.html', time = datetime.now())
+
+@app.route('/test')
+def test():
+    csv_columns = ['Username','Email']
+    joiners = mongo.db.joiners
+    existing_joiner = joiners.find({})
+    info = list(existing_joiner)
+    dict_data = []
+    for user in info:
+        new_user = {
+            'Username': user['username'],
+            'Email': user['email']
+        }
+        dict_data.append(new_user)
+
+    currentPath = os.getcwd()
+    csv_file = currentPath + "/csv/Names.csv"
+
+    WriteDictToCSV(csv_file, csv_columns, dict_data)
+    return "worked"
