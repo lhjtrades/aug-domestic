@@ -40,8 +40,10 @@ def search():
         info2 = existing_joiner['items']
         if existing_joiner is None:
             return render_template('index.html', time = datetime.now())
-        return render_template('index.html', info = info, info2 = info2, time = datetime.now())
-    return render_template('index.html', time = datetime.now())
+        else:
+            return render_template('index.html', info = info, info2 = info2, time = datetime.now())
+    else:
+        return render_template('index.html', time = datetime.now())
 
 @app.route('/test')
 def test():
