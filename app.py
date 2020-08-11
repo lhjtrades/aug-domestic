@@ -39,8 +39,8 @@ def search():
         if existing_joiner is None:
             return render_template('index.html', time = datetime.now())
         else:
-            info = dict(existing_joiner)
-            info2 = existing_joiner['items']
+            info = list(existing_joiner)[0]
+            info2 = info['items']
             return render_template('index.html', info = info, info2 = info2, time = datetime.now())
     return render_template('index.html', time = datetime.now())
 
