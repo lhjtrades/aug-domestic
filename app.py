@@ -35,14 +35,16 @@ def index():
 def search():
     if request.method == 'POST':
         joiners = mongo.db.joiners
-        existing_joiner = joiners.find({'username':'lhjtrades'})
-        if existing_joiner is None:
-            return render_template('index.html', time = datetime.now())
-        else:
+        joiner = joiners.find({'username':request.form['search']})
+        existing_joiner = list(joiner)
+        if existing_joiner:
             wow = list(existing_joiner)
             info = wow[0]
             info2 = info['items']
             return render_template('index.html', info = info, info2 = info2, time = datetime.now())
+        else:
+            error = "That username doesn't exist. Please try again or contact me if you think there is a mistake."
+            return render_template('index.html', error = error)
     return render_template('index.html', time = datetime.now())
 
 @app.route('/test')
