@@ -15,13 +15,14 @@
         <div class="holder">
             <div class="container" id="centered">
                 <form action="/search" method="POST">
-                    <input type="text" name="search" placeholder="Search" value="{% if info %}{{info.username}}{% endif %}">
+                    <input type="text" name="search" placeholder="enter ig username" value="{% if info %}{{info.username}}{% endif %}">
                     <input type="submit" value="Search">
                 </form>
                 <br/>
                 {% if error %}
                 {{ error }}
                 {% endif %}
+
                 {% if info %}
                 <div style="text-align:left;">
                     <b>Username:</b> {{ info.username }}<br/>
@@ -30,7 +31,7 @@
                     <b>Items:</b><br/>
                     <ul>
                         {% for key in info['items'] %}
-                            <li>{{key}}: {{info['items'][key]}}</li>
+                            <li><b>{{item_key[key]}}:</b> {{info['items'][key]}}</li>
                         {% endfor %}
                     </ul>
                     <!--<b>Total:</b> {{ info.total }}<br/>-->
