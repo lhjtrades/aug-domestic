@@ -53,7 +53,9 @@ item_keywords = {
     "OTY":"Ode to You Japan Trading Cards",
     "FFJosh":"Fallin Flower Joshua Photocards",
     "HGFansign":"Album + Fansign PC GO",
-    "personalorder":"Personal Order"
+    "personalorder":"Personal Order",
+    "Kihno":"Heng:garae Kihno Cards"
+    "3FS":"AppleMusic/MusicArt Fansign Photocards"
 }
 
 # -- Routes section --
