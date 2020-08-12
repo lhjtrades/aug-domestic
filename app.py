@@ -19,7 +19,7 @@ SECRET = app.config['SECRET']
 app.config['MONGO_DBNAME'] = 'joiners'
 
 # URI of database
-app.config['MONGO_URI'] = f'mongodb+srv://simple_user:{SECRET}@cluster0.fnifx.mongodb.net/joiners?retryWrites=true&w=majority'
+app.config['MONGO_URI'] = f'mongodb+srv://simple_user:QQVQXGLwg3ACixff@cluster0.fnifx.mongodb.net/joiners?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
