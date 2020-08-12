@@ -15,11 +15,13 @@ app = Flask(__name__)
 app.config['SECRET'] = os.getenv("SECRET_KEY")
 SECRET = app.config['SECRET']
 
+s3 = os.environ['SECRET']
+
 # name of database
 app.config['MONGO_DBNAME'] = 'joiners'
 
 # URI of database
-app.config['MONGO_URI'] = f'mongodb+srv://simple_user:QQVQXGLwg3ACixff@cluster0.fnifx.mongodb.net/joiners?retryWrites=true&w=majority'
+app.config['MONGO_URI'] = f'mongodb+srv://join:{s3}@cluster0.fnifx.mongodb.net/joiners?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
