@@ -39,8 +39,10 @@ def search():
         if existing_joiner is None:
             return render_template('index.html', time = datetime.now())
         else:
-            info = existing_joiner[0]
-            return render_template('index.html', info = info, time = datetime.now())
+            wow = list(existing_joiner)
+            info = wow[0]
+            info2 = info['items']
+            return render_template('index.html', info = info, info2 = info2, time = datetime.now())
     return render_template('index.html', time = datetime.now())
 
 @app.route('/test')
