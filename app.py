@@ -16,6 +16,7 @@ app.config['SECRET'] = os.getenv("SECRET_KEY")
 SECRET = app.config['SECRET']
 
 s3 = os.environ['SECRET']
+#s3 = SECRET
 
 # name of database
 app.config['MONGO_DBNAME'] = 'joiners'
@@ -72,7 +73,7 @@ def index():
 def search():
     if request.method == 'POST':
         joiners = mongo.db.joiners
-        joiner = joiners.find({'username':request.form['search']})
+        joiner = joiners.find({'username':request.form['search'].lower()})
         existing_joiner = list(joiner)
         if existing_joiner:
             wow = list(existing_joiner)
@@ -84,22 +85,23 @@ def search():
             return render_template('index.html', error = error)
     return render_template('index.html', time = datetime.now())
 
-@app.route('/test')
-def test():
-    csv_columns = ['Username','Email']
-    joiners = mongo.db.joiners
-    existing_joiner = joiners.find({})
-    info = list(existing_joiner)
-    dict_data = []
-    for user in info:
-        new_user = {
-            'Username': user['username'],
-            'Email': user['email']
-        }
-        dict_data.append(new_user)
+# @app.route('/test')
+# def test():
+#     csv_columns = ['Username','Status','Location']
+#     joiners = mongo.db.joiners
+#     existing_joiner = joiners.find({})
+#     info = list(existing_joiner)
+#     dict_data = []
+#     for user in info:
+#         new_user = {
+#             'Username': user['username'],
+#             'Status': "",
+#             'Location': user['location'].upper()
+#         }
+#         dict_data.append(new_user)
 
-    currentPath = os.getcwd()
-    csv_file = currentPath + "/csv/Names.csv"
+#     currentPath = os.getcwd()
+#     csv_file = currentPath + "/csv/Names.csv"
 
-    WriteDictToCSV(csv_file, csv_columns, dict_data)
-    return "worked"
+#     WriteDictToCSV(csv_file, csv_columns, dict_data)
+#     return "worked"
