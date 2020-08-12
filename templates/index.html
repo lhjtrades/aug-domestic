@@ -25,8 +25,8 @@
                 <b>Location:</b> {{ info.location }}<br/>
                 <b>Items:</b><br/>
                 <ul>
-                    {% for key in info2 %}
-                        <li>{{key}}: {{info2[key]}}</li>
+                    {% for key in info['items'] %}
+                        <li>{{key}}: {{info['items'][key]}}</li>
                     {% endfor %}
                 </ul>
                 <b>Total:</b> {{ info.total }}<br/>
