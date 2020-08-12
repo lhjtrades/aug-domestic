@@ -21,18 +21,18 @@
                 <br/>
                 {% if info %}
                 <b>Username:</b> {{ info.username }}<br/>
-                <b>Email:</b> {{ info.email }}<br/>
-                <b>Location:</b> {{ info.location }}<br/>
+                <!---<b>Email:</b> {{ info.email }}<br/>-->
+                <b>Location:</b> <span style="text-transform:uppercase;">{{ info.location }}</span><br/>
                 <b>Items:</b><br/>
                 <ul>
                     {% for key in info['items'] %}
                         <li>{{key}}: {{info['items'][key]}}</li>
                     {% endfor %}
                 </ul>
-                <b>Total:</b> {{ info.total }}<br/>
-                <b>Regular:</b> {{ info.reg }}<br/>
-                <b>Trading:</b> {{ info.trading }}<br/>
-                <b>Other:</b> {{ info.other }}<br/>
+                <!--<b>Total:</b> {{ info.total }}<br/>-->
+                <b># of Regular Photocards:</b> {{ info.reg }}<br/>
+                <b># of Trading Cards:</b> {{ info.trading }}<br/>
+                <b># of Other Items (i.e. bigger items like kihnos):</b> {{ info.other }}<br/>
                 {% endif %}
             </div>
         </div>

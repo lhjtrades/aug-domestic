@@ -35,7 +35,7 @@ def index():
 def search():
     if request.method == 'POST':
         joiners = mongo.db.joiners
-        existing_joiner = list(joiners.find({'username':'lhjtrades'}))
+        existing_joiner = joiners.find({'username':'lhjtrades'})
         if existing_joiner is None:
             return render_template('index.html', time = datetime.now())
         else:
